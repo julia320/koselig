@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">koselig</string>
+    <string name="song_search">Search for a Song:</string>
+    <string name="search">Search</string>
 </resources>
