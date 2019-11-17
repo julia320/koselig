@@ -21,7 +21,7 @@ class WMTAManager {
 
     private var oAuthToken: String? = null
 
-    // This runs extra code when WMTAManager is created (e.g. the constructor)
+    // This runs extra code when Lyric Manager is created (e.g. the constructor)
     init {
         val builder = OkHttpClient.Builder()
 
@@ -57,15 +57,15 @@ class WMTAManager {
             .build()
 
         okHttpClient.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
+
+            override fun onFailure(call: okhttp3.Call, e: IOException) {
                 // Same error handling to last time
                 errorCallback(e)
             }
 
-            override fun onResponse(call: Call, response: Response) {
+            override fun onResponse(call: okhttp3.Call, response: Response) {
                 // Similar success / error handling to last time
-                val alerts = mutableListOf<Alert>()
-                val responseString = response.body()?.string()
+                val responseString = response.body?.string()
 
                 if (response.isSuccessful && responseString != null) {
                     print("if")
@@ -86,15 +86,16 @@ class WMTAManager {
 
                         //get path
                         okHttpClient.newCall(request2).enqueue(object : Callback {
-                            override fun onFailure(call: Call, e: IOException) {
+
+                            override fun onFailure(call: okhttp3.Call, e: IOException) {
                                 // Same error handling to last time
                                 errorCallback(e)
                             }
 
-                            override fun onResponse(call: Call, response: Response) {
+                            override fun onResponse(call: okhttp3.Call, response: Response) {
                                 // Similar success / error handling to last time
                                 val path = mutableListOf<String>()
-                                val responseString2 = response.body()?.string()
+                                val responseString2 = response.body?.string()
 
                                 if (response.isSuccessful && responseString2 != null) {
 
@@ -132,7 +133,7 @@ class WMTAManager {
     }
 
     //get alerts
-    fun retrieveAlerts(
+   /* fun retrieveAlerts(
         successCallback: (List<Alert>) -> Unit,
         errorCallback: (Exception) -> Unit
     ) {
@@ -195,6 +196,6 @@ class WMTAManager {
                     errorCallback(Exception("Search Alerts call failed"))
                 }
             }
-        })
+        })*/
     }
 
