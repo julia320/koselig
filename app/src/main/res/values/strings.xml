@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">koselig</string>
+    <string name="song_title_search">song title</string>
+    <string name="song_artist_search">song artist</string>
+    <string name="search">Search</string>
+    <string name="promptMsg">Please enter a song title and artist to view lyrics</string>
 </resources>
