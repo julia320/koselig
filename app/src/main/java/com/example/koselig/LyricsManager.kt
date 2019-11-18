@@ -83,12 +83,13 @@ class LyricsManager {
                     //val jsonObject = JSONObject(responseString2)
                     //val track = jsonObject.getJSONArray("body")
 
-                    val track = JSONObject(responseString).getJSONObject("body").getJSONArray("lyrics")
-                    if (track.length() > 0) {
+                    val track = JSONObject(responseString).getJSONObject("message").getJSONObject("body").getJSONObject("lyrics")
+                    lyrics.add(track.getString("lyrics_body"))
+                    /*if (track.length() > 0) {
                         val curr = track.getJSONObject(0)
                         lyrics[0] = curr.getString("lyrics_body")
 
-                    }
+                    }*/
                     successCallback(lyrics)
 
                     //...
