@@ -54,8 +54,8 @@ class LyricsManager {
         val artist = artistInput.replace(" ", "%20")
         //get url request to find song
         //variable to hold song lyrics
-
-        var urlrequest: String = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=$title&q_artist=$artist"
+        // https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=ride&q_artist=lil%20nas&apikey=f076665c50ff3af5fba6f7b96531e20b
+        var urlrequest: String = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=$title&q_artist=$artist&apikey=f076665c50ff3af5fba6f7b96531e20b\n"
 
         val request = Request.Builder()
             .url(urlrequest)
@@ -71,13 +71,19 @@ class LyricsManager {
             override fun onResponse(call: okhttp3.Call, response: Response) {
                 // Similar success / error handling to last time
                 val lyrics = mutableListOf<String>()
-                val responseString2 = response.body?.string()
+                val responseString1 = response.body?.string()
+                //get rid of callback in response
+                var responseString = responseString1
+                if (responseString1 != null){
+                    val repsonseString2 = responseString1.replace("callback(", "")
+                    responseString = repsonseString2.replace(");", "")
+                }
 
-                if (response.isSuccessful && responseString2 != null) {
-                    val jsonObject = JSONObject(responseString2)
-                    val track = jsonObject.getJSONArray("body")
+                if (response.isSuccessful && responseString != null) {
+                    //val jsonObject = JSONObject(responseString2)
+                    //val track = jsonObject.getJSONArray("body")
 
-                    //val track = JSONObject(responseSt.getJSONArray("body")
+                    val track = JSONObject(responseString).getJSONObject("body").getJSONArray("lyrics")
                     if (track.length() > 0) {
                         val curr = track.getJSONObject(0)
                         lyrics[0] = curr.getString("lyrics_body")
