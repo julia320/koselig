@@ -6,41 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LyricActivity">
-
-    <TextView
-            android:id="@+id/lyrics"
-            android:layout_width="338dp"
-            android:layout_height="221dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/results" />
-
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/searchbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/song_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-            android:id="@+id/submit_song"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchbar" />
-
-    <TextView
-            android:id="@+id/results"
-            android:layout_width="336dp"
-            android:layout_height="157dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/submit_song" />
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/lyric_recycler"
+            android:layout_width="395dp"
+            android:layout_height="587dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 </android.support.constraint.ConstraintLayout>

@@ -14,7 +14,7 @@ import org.json.JSONObject
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-class WMTAManager {
+class LyricsManager {
 
     // OkHttp is a library used to make network calls
     private val okHttpClient: OkHttpClient
@@ -66,11 +66,10 @@ class WMTAManager {
 
             override fun onResponse(call: okhttp3.Call, response: Response) {
                 // Similar success / error handling to last time
-                val songs = mutableListOf<Int>()
+                val lyrics = mutableListOf<String>()
                 val responseString2 = response.body?.string()
 
                 if (response.isSuccessful && responseString2 != null) {
-                    var lyrics = mutableListOf<String>()
                     val track = JSONObject(responseString2).getJSONObject("body").getJSONArray("lyrics")
                     if (track.length() > 0) {
                         val curr = track.getJSONObject(0)
@@ -87,6 +86,5 @@ class WMTAManager {
             }
         })
     }
-    
     }
 
