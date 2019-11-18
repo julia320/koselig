@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.koselig.R
 
-class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.Adapter<PathAdapter.ViewHolder>() {
+class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.Adapter<LyricAdapter.ViewHolder>() {
 
     /**
      * Open & parse our XML file for our row and return the ViewHolder.
@@ -19,7 +19,7 @@ class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Open & parse our XML file
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.pathrow, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.lyric_row, parent, false)
 
         // Create a new ViewHolder
         return ViewHolder(view)
@@ -28,7 +28,7 @@ class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.
     /**
      * Returns the number of rows to render
      */
-    override fun getItemCount(): Int = path.size
+    override fun getItemCount(): Int = lyrics.size
 
     /**
      * Given a row, fill it with data.
@@ -38,9 +38,9 @@ class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.
      * which you can use to index your data set.
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentpath = path[position]
+        val currLyrics = lyrics[position]
 
-        holder.directionstepTextView.text = currentpath
+        holder.lyricTextView.text = currLyrics
         // TODO Download the image by its URL and load it into the ImageView
     }
 
@@ -50,7 +50,7 @@ class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.
      */
     class ViewHolder constructor(view: View) : RecyclerView.ViewHolder(view) {
 
-        val directionstepTextView: TextView = view.findViewById(R.id.directionstep)
+        val lyricTextView: TextView = view.findViewById(R.id.lyricstep)
 
     }
 }

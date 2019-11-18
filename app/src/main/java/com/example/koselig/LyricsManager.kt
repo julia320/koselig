@@ -13,6 +13,10 @@ import org.jetbrains.anko.doAsync
 import org.json.JSONObject
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+import org.json.JSONArray
+import android.R.string
+
+
 
 class LyricsManager {
 
@@ -51,7 +55,7 @@ class LyricsManager {
         //get url request to find song
         //variable to hold song lyrics
 
-        var urlrequest: String = "matcher.lyrics.get?q_track=$title&q_artist=$artist"
+        var urlrequest: String = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=$title&q_artist=$artist"
 
         val request = Request.Builder()
             .url(urlrequest)
@@ -70,7 +74,10 @@ class LyricsManager {
                 val responseString2 = response.body?.string()
 
                 if (response.isSuccessful && responseString2 != null) {
-                    val track = JSONObject(responseString2).getJSONObject("body").getJSONArray("lyrics")
+                    val jsonObject = JSONObject(responseString2)
+                    val track = jsonObject.getJSONArray("body")
+
+                    //val track = JSONObject(responseSt.getJSONArray("body")
                     if (track.length() > 0) {
                         val curr = track.getJSONObject(0)
                         lyrics[0] = curr.getString("lyrics_body")
