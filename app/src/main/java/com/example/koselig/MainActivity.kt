@@ -9,14 +9,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.app.AlertDialog
-import android.location.Geocoder
-import android.location.Location
-import android.widget.ArrayAdapter
-import android.widget.Toast
-import android.content.SharedPreferences
-import com.example.koselig.R
-import kotlinx.android.synthetic.main.activity_lyric.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -82,10 +74,6 @@ class MainActivity : AppCompatActivity() {
             //get info inputted
             val artistName = artist.text.toString().trim()
             val titleName = title.text.toString().trim()
-
-            // Using an Intent to start our TweetsActivity and send a small amount of data to it
-//            val intent: Intent = Intent(this, TweetsActivity::class.java)
-//            intent.putExtra("location", "Washington D.C.")
 
             val intent: Intent = Intent(this, LyricActivity::class.java)
             intent.putExtra("titleInput", titleName)

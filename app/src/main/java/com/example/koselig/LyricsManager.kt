@@ -1,20 +1,10 @@
 package com.example.koselig
 
-
-import android.location.Address
-import android.location.Location
-import android.telecom.Call
-import android.util.EventLogTags
-import android.util.Log
-import android.widget.TextView
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
-import org.jetbrains.anko.doAsync
 import org.json.JSONObject
 import java.io.IOException
 import java.util.concurrent.TimeUnit
-import org.json.JSONArray
-import android.R.string
 import java.net.URLEncoder
 
 
@@ -59,7 +49,7 @@ class LyricsManager {
 
         val request = Request.Builder()
             .url(urlrequest)
-            .header("api_key", "f076665c50ff3af5fba6f7b96531e20b")
+            .header("api_key", R.string.lyricsapi.toString())
             .build()
         okHttpClient.newCall(request).enqueue(object : Callback {
 
