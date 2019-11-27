@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.koselig.R
 import com.google.cloud.translate.Translation
 
-class LyricAdapter constructor(private val lyrics: List<Translation>) : RecyclerView.Adapter<LyricAdapter.ViewHolder>() {
+class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.Adapter<LyricAdapter.ViewHolder>() {
 
     /**
      * Open & parse our XML file for our row and return the ViewHolder.
@@ -41,7 +41,7 @@ class LyricAdapter constructor(private val lyrics: List<Translation>) : Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currLyrics = lyrics[position]
 
-        holder.lyricTextView.text = currLyrics.translatedText
+        holder.lyricTextView.text = currLyrics
         // TODO Download the image by its URL and load it into the ImageView
     }
 

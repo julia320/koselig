@@ -60,12 +60,22 @@ class LyricActivity : AppCompatActivity() {
                         Translate.TranslateOption.targetLanguage("es"),
                         Translate.TranslateOption.model("base")
                     )
-                    // Create the adapter and assign it to the RecyclerView
 
-                    recyclerView.adapter = LyricAdapter(translation)
+                    // Create the adapter and assign it to the RecyclerView
+                    recyclerView.adapter = LyricAdapter(lyrics)
                     if (lyrics.isEmpty()){
                         Toast.makeText(this@LyricActivity, R.string.lyric_error, Toast.LENGTH_LONG).show()
                     }
+
+                    // Convert the Translation list to String list and assign to RecyclerView
+                    var translatedText = mutableListOf<String>()
+                    var i = 0
+                    for (lyric in translation) {
+                        translatedText.add(lyrics[i])
+                        translatedText.add(lyric.translatedText)
+                        i++
+                    }
+                    recyclerView.adapter = LyricAdapter(translatedText)
                 }
             },
             errorCallback = {
