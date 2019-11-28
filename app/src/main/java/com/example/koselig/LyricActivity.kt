@@ -33,6 +33,7 @@ class LyricActivity : AppCompatActivity() {
 
 
         // Get translation
+        // Set up translation class
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         try {
@@ -69,11 +70,9 @@ class LyricActivity : AppCompatActivity() {
 
                     // Convert the Translation list to String list and assign to RecyclerView
                     var translatedText = mutableListOf<String>()
-                    var i = 0
-                    for (lyric in translation) {
+                    for ((i,lyric) in translation.withIndex()) {
                         translatedText.add(lyrics[i])
                         translatedText.add(lyric.translatedText)
-                        i++
                     }
                     recyclerView.adapter = LyricAdapter(translatedText)
                 }
@@ -89,4 +88,3 @@ class LyricActivity : AppCompatActivity() {
 
     }
 }
-
