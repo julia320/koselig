@@ -5,6 +5,7 @@ import android.os.StrictMode
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.google.auth.oauth2.GoogleCredentials
@@ -33,7 +34,6 @@ class LyricActivity : AppCompatActivity() {
         val language = intent.getStringExtra("language")
 
 
-        // Get translation
         // Set up translation class
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
@@ -50,6 +50,18 @@ class LyricActivity : AppCompatActivity() {
         }
 
 
+        // Find code that matches language selection
+        var code = "es" // use Spanish as default
+        for (lang in translate!!.listSupportedLanguages()) {
+            val list = lang.toString().split("=")
+            val name = list[2].substring(0, list[2].length-1)
+            if (name.compareTo(language) == 0) {
+                code = list[1].substring(0, 2)
+                break
+            }
+        }
+
+
         //get path
         lyricManager.retrieveSongLyrics(
             titleInput = inputTitle,
@@ -59,7 +71,7 @@ class LyricActivity : AppCompatActivity() {
                     // Get the translation
                     val translation = translate!!.translate (
                         lyrics,
-                        Translate.TranslateOption.targetLanguage("es"),
+                        Translate.TranslateOption.targetLanguage(code),
                         Translate.TranslateOption.model("base")
                     )
 
