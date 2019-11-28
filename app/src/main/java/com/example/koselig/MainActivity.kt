@@ -114,10 +114,12 @@ class MainActivity : AppCompatActivity() {
             //get info inputted
             val artistName = artist.text.toString().trim()
             val titleName = title.text.toString().trim()
+            val language = spinner.getSelectedItem().toString()
 
             val intent: Intent = Intent(this, LyricActivity::class.java)
             intent.putExtra("titleInput", titleName)
             intent.putExtra("artistInput", artistName)
+            intent.putExtra("language", language)
             startActivity(intent)
         }
     }

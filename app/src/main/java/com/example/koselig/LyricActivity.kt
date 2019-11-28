@@ -30,6 +30,7 @@ class LyricActivity : AppCompatActivity() {
 
         val inputTitle = intent.getStringExtra("titleInput")
         val inputArtist = intent.getStringExtra("artistInput")
+        val language = intent.getStringExtra("language")
 
 
         // Get translation
