@@ -9,23 +9,25 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.app.AlertDialog
-import android.location.Geocoder
-import android.location.Location
+import android.os.StrictMode
+import com.google.auth.oauth2.GoogleCredentials
+import com.google.cloud.translate.Translate
+import com.google.cloud.translate.TranslateOptions
+import java.io.IOException
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import android.content.SharedPreferences
-import com.example.koselig.R
-import kotlinx.android.synthetic.main.activity_lyric.*
-import java.util.*
+import android.widget.Spinner
+
+
 
 class MainActivity : AppCompatActivity() {
 
 
     private lateinit var title: EditText
-
     private lateinit var artist: EditText
 
     private lateinit var submit_button: Button
+
+    private var translate: Translate? = null
 
     /**
      * Creating an "anonymous class" here (e.g. we're creating a class which implements
@@ -75,6 +77,36 @@ class MainActivity : AppCompatActivity() {
         title.addTextChangedListener(textWatcher)
         artist.addTextChangedListener(textWatcher)
 
+
+        // Set up translation class
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+        try {
+            resources.openRawResource(R.raw.credentials).use { `is` ->
+                val myCredentials = GoogleCredentials.fromStream(`is`)
+                val translateOptions = TranslateOptions.newBuilder().setCredentials(myCredentials).build()
+                translate = translateOptions.service
+            }
+
+        }
+        catch (ioe: IOException) {
+            ioe.printStackTrace()
+        }
+
+        // Put list of languages in drop down menu
+        val languages = mutableListOf<String>()
+        for (lang in translate!!.listSupportedLanguages()) {
+            var name = lang.toString().split("=")[2]
+            name = name.substring(0, name.length-1)
+            languages.add(name)
+        }
+
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        val adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, languages)
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+        spinner.setAdapter(adapter)
+
+
         submit_button.setOnClickListener {
             Log.d("MainActivity", "Submit search Clicked")
 
@@ -82,14 +114,12 @@ class MainActivity : AppCompatActivity() {
             //get info inputted
             val artistName = artist.text.toString().trim()
             val titleName = title.text.toString().trim()
-
-            // Using an Intent to start our TweetsActivity and send a small amount of data to it
-//            val intent: Intent = Intent(this, TweetsActivity::class.java)
-//            intent.putExtra("location", "Washington D.C.")
+            val language = spinner.getSelectedItem().toString()
 
             val intent: Intent = Intent(this, LyricActivity::class.java)
             intent.putExtra("titleInput", titleName)
             intent.putExtra("artistInput", artistName)
+            intent.putExtra("language", language)
             startActivity(intent)
         }
     }

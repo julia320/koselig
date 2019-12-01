@@ -28,14 +28,43 @@
             android:hint="@string/song_artist_search" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/song_title_search"/>
+
     <Button
             android:id="@+id/submit_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="112dp"
             android:text="@string/search"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/song_artist_search"/>
+            app:layout_constraintTop_toBottomOf="@+id/song_artist_search" />
+
+    <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="196dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/submit_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.838"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/song_artist_search"
+            app:layout_constraintVertical_bias="0.605" />
+
+    <TextView
+            android:id="@+id/textView"
+            android:layout_width="110dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/language"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/submit_search"
+            app:layout_constraintEnd_toStartOf="@+id/spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/song_artist_search" />
 
 </android.support.constraint.ConstraintLayout>

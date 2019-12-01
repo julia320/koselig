@@ -1,21 +1,11 @@
 package com.example.koselig
 
-
-import android.location.Address
-import android.location.Location
-import android.telecom.Call
-import android.util.EventLogTags
-import android.util.Log
-import android.widget.TextView
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
-import org.jetbrains.anko.doAsync
 import org.json.JSONObject
 import java.io.IOException
 import java.util.concurrent.TimeUnit
-import org.json.JSONArray
-import android.R.string
-
+import java.net.URLEncoder
 
 
 class LyricsManager {
@@ -50,8 +40,8 @@ class LyricsManager {
         errorCallback: (Exception) -> Unit
     ){
         //prepare strings for query (replace spaces with %20)
-        val title = titleInput.replace(" ", "%20")
-        val artist = artistInput.replace(" ", "%20")
+        val title = URLEncoder.encode(titleInput, "UTF-8");
+        val artist = URLEncoder.encode(artistInput, "UTF-8");
         //get url request to find song
         //variable to hold song lyrics
         // https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=ride&q_artist=lil%20nas&apikey=f076665c50ff3af5fba6f7b96531e20b
@@ -59,7 +49,7 @@ class LyricsManager {
 
         val request = Request.Builder()
             .url(urlrequest)
-            .header("api_key", "f076665c50ff3af5fba6f7b96531e20b")
+            .header("api_key", R.string.lyricsapi.toString())
             .build()
         okHttpClient.newCall(request).enqueue(object : Callback {
 
@@ -80,19 +70,11 @@ class LyricsManager {
                 }
 
                 if (response.isSuccessful && responseString != null) {
-                    //val jsonObject = JSONObject(responseString2)
-                    //val track = jsonObject.getJSONArray("body")
 
                     val track = JSONObject(responseString).getJSONObject("message").getJSONObject("body").getJSONObject("lyrics")
                     lyrics.add(track.getString("lyrics_body"))
-                    /*if (track.length() > 0) {
-                        val curr = track.getJSONObject(0)
-                        lyrics[0] = curr.getString("lyrics_body")
-
-                    }*/
                     successCallback(lyrics)
 
-                    //...
                 } else {
                     // Invoke the callback passed to our [retrieveTweets] function.
                     errorCallback(Exception("get lyrics call failed"))
@@ -100,5 +82,5 @@ class LyricsManager {
             }
         })
     }
-    }
+}
 

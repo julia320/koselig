@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.koselig.R
+import com.google.cloud.translate.Translation
 
 class LyricAdapter constructor(private val lyrics: List<String>) : RecyclerView.Adapter<LyricAdapter.ViewHolder>() {
 
