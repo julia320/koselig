@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">koselig</string>
-    <string name="song_title_search">song title</string>
-    <string name="song_artist_search">song artist</string>
+    <string name="song_title_search">Song Title</string>
+    <string name="song_artist_search">Song Artist</string>
     <string name="search">Search</string>
-    <string name="promptMsg">Please enter a song title and artist to view lyrics</string>
+    <string name="promptMsg">Please enter a song title and artist to view lyrics.</string>
     <string name="no_connection">No internet connection; cannot be translated.</string>
     <string name="lyric_error">The lyrics could not be found or do not exist in the database</string>
     <string name="language">Language:</string>

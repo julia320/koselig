@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">koselig</string>
+    <string name="song_title_search">Sangtittel</string>
+    <string name="song_artist_search">Sanger Artister</string>
+    <string name="search">Søk</string>
+    <string name="promptMsg">Skriv inn en sangtittel og artist for å se tekster.</string>
+    <string name="no_connection">Ingen internettforbindelse; kan ikke oversettes.</string>
+    <string name="lyric_error">Sangtekst ble ikke funnet eller eksisterer ikke i databasen.</string>
+    <string name="language">Språk:</string>
+</resources>
