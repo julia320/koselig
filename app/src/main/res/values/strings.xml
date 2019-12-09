@@ -8,4 +8,8 @@
     <string name="lyric_error">The lyrics could not be found or do not exist in the database</string>
     <string name="language">Language:</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_pass">Confirm Password</string>
 </resources>
