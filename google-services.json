@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1084515053665",
+    "firebase_url": "https://koselig-7cd34.firebaseio.com",
+    "project_id": "koselig-7cd34",
+    "storage_bucket": "koselig-7cd34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084515053665:android:8173e465200646ed707a20",
+        "android_client_info": {
+          "package_name": "com.example.koselig"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084515053665-cudb7itu9rmh8gtml04bu0sd650dm0uq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb38qDzfjFQUQhrnHTHlSpuiRmSI0yTHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084515053665-cudb7itu9rmh8gtml04bu0sd650dm0uq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
