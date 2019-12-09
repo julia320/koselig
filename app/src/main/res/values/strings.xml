@@ -12,4 +12,5 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="confirm_pass">Confirm Password</string>
+    <string name="signup">Sign Up</string>
 </resources>
