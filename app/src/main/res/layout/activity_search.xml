@@ -30,6 +30,8 @@ tools:context=".MainActivity">
         app:layout_constraintTop_toBottomOf="@+id/song_title_search"/>
 
 <Button
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"
         android:id="@+id/submit_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
