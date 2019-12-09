@@ -41,7 +41,7 @@ class SignUpActivity : AppCompatActivity() {
                         val currentUser: FirebaseUser? = firebaseAuth.currentUser
                         val email = currentUser?.email
                         Toast.makeText(this, "Registered as $email", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, SignUpActivity::class.java)
+                        val intent = Intent(this, SearchActivity::class.java)
                         startActivity(intent)
                     } else {
                         val exception = task.exception
