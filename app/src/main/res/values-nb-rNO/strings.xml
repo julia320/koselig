@@ -8,4 +8,11 @@
     <string name="no_connection">Ingen internettforbindelse; kan ikke oversettes.</string>
     <string name="lyric_error">Sangtekst ble ikke funnet eller eksisterer ikke i databasen.</string>
     <string name="language">Språk:</string>
+    <string name="username">Brukernavn</string>
+    <string name="password">Passord</string>
+    <string name="confirm_pass">Bekreft Passord</string>
+    <string name="login">Logg Inn</string>
+    <string name="signup">Ny Konto</string>
+    <string name="title_activity_search">Søk</string>
+    <string name="title_activity_sign_up">Ny Konto</string>
 </resources>
